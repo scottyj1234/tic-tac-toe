@@ -90,14 +90,6 @@ const GameBoardFactory = function () {
     return true;
   }
 
-  const logBoard = function() {
-    console.log(GameBoard.boardToString());
-  }
-
-  const testGameBoard = function() {
-    
-  }
-
   return {
     boardToString,
     makePlay,
