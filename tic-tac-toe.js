@@ -100,22 +100,22 @@ const GameBoardFactory = function () {
 };
 
 const Game = (function(gameboard) {
-  const PlayerOne = {
+  const playerOne = {
     name: "",
     icon: "x"
   }
   
-  const PlayerTwo = {
+  const playerTwo = {
     name: "",
     icon: "o"
   }
 
   const namePlayerOne = function(name) {
-    PlayerOne.name = name;
+    playerOne.name = name;
   }
 
   const namePlayerTwo = function(name) {
-    PlayerTwo.name = name;
+    playerTwo.name = name;
   }
 
   const playGame = function() {
@@ -123,12 +123,25 @@ const Game = (function(gameboard) {
     namePlayerOne("Player One");
     namePlayerTwo("Player Two");
 
-    let playerTurn = PlayerOne;
+    let playerTurn = playerOne;
 
     while (gameboard.getWinningIndices === null) {
       console.log(`${playerTurn.name}'s Turn`);
-      prompt('Enter "row col" to play');
+      executePlayerTurn();
 
+      playerTurn = (playerTurn === playerOne) ? playerTwo : playerOne;
+    }
+  }
+
+  const executePlayerTurn = function(player) {
+    let rowCol = prompt('Enter "row col" to play');
+    while(true) {
+      try {
+        gameboard.makePlay(rowCol.split(' ')[0], rowCol.split(' ')[1], player.icon);
+        return;
+      } catch (error) {
+        rowCol = prompt(`Invalid move: ${error.message}\nEnter "row col" to play`);
+      }
     }
   }
   
