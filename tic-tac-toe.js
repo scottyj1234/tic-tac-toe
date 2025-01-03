@@ -133,15 +133,16 @@ const Game = (function(gameboard) {
 
     let playerTurn = playerOne;
 
-    while (gameboard.getWinningIndices === null && !gameboard.isDraw()) {
+    while (gameboard.getWinningIndices() === null && !gameboard.isDraw()) {
       console.log(`${playerTurn.name}'s Turn`);
       console.log(gameboard.boardToString());
-      executePlayerTurn();
+      executePlayerTurn(playerTurn);
 
       playerTurn = (playerTurn === playerOne) ? playerTwo : playerOne;
     }
 
     if (gameboard.isDraw()) {
+      console.log(gameboard.boardToString());
       console.log('The game is a draw!');
     } else {
       const winningPlayer = (playerTurn === playerOne) ? playerTwo : playerOne;
@@ -162,5 +163,9 @@ const Game = (function(gameboard) {
         rowCol = prompt(`Invalid move: ${error.message}\nEnter "row col" to play`);
       }
     }
+  }
+
+  return {
+    playGame
   }
 })(GameBoardFactory())
