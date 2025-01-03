@@ -83,6 +83,13 @@ const GameBoardFactory = function () {
     return null;
   }
 
+  const isDraw = function() {
+    for (let row of board) {
+      if (row.some((space) => space === null)) return false;
+    }
+    return true;
+  }
+
   const logBoard = function() {
     console.log(GameBoard.boardToString());
   }
@@ -96,6 +103,7 @@ const GameBoardFactory = function () {
     makePlay,
     clearBoard,
     getWinningIndices,
+    isDraw
   };
 };
 
