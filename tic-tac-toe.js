@@ -88,118 +88,7 @@ const GameBoard = (function () {
   }
 
   const testGameBoard = function() {
-    // check initial board
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('null');
-
-    board = [
-      ['x', null, null],
-      [null, null, null], 
-      [null, null, null]
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('null');
-
-    board = [
-      ['x', null, null],
-      ['x', null, null], 
-      ['x', null, null]
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[0, 0] [1, 0] [2, 0]');
-
-    board = [
-      [null, 'x', null],
-      [null, 'x', null], 
-      [null, 'x', null]
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[0, 1] [1, 1] [2, 1]');
-
-    board = [
-      [null, null, 'o'],
-      [null, null, 'o'], 
-      [null, null, 'o']
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[0, 2] [1, 2] [2, 2]');
-
-    board = [
-      [null, null, 'o'],
-      [null, null, 'x'], 
-      [null, null, 'o']
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('null');
-
-    board = [
-      ['o', 'o', 'o'],
-      [null, null, null], 
-      [null, null, null]
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[0, 0] [0, 1] [0, 2]');
-
-    board = [
-      [null, null, null],
-      [null, null, null], 
-      ['o', 'o', 'o']
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[2, 0] [2, 1] [2, 2]');
-
-    board = [
-      [null, null, null],
-      [null, null, null], 
-      ['o', 'o', 'x']
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('null');
-
-    board = [
-      ['x', null, null],
-      [null, 'x', null], 
-      [null, null, 'x']
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[0, 0] [1, 1] [2, 2]');
-
-    board = [
-      [null, null, 'x'],
-      [null, 'x', null], 
-      ['x', null, null]
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[0, 2] [1, 1] [2, 0]');
-
-    board = [
-      [null, null, 'x'],
-      [null, 'o', null], 
-      ['x', null, null]
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('null');
-
-    board = [
-      ['x', 'o', 'x'],
-      ['o', 'o', null], 
-      ['x', 'x', 'x']
-    ];
-    logBoard();
-    console.log(getWinningIndices());
-    console.log('[2, 0] [2, 1] [2, 2]');
+    
   }
 
   return {
@@ -207,7 +96,6 @@ const GameBoard = (function () {
     makePlay,
     clearBoard,
     getWinningIndices,
-    testGameBoard
   };
 })();
 
