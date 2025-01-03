@@ -30,15 +30,15 @@ const GameBoardFactory = function () {
   const makePlay = function(row, col, icon) {
     if (row < 1 || row > 3 || col < 1 || col > 3) {
       console.error(`Attempted to make a play at ${row}, ${col} - out of bounds`);
-      return;
+      throw Error(`Attempted to make a play at ${row}, ${col} - out of bounds`)
     }
     if (icon !== 'x' && icon !== 'o') {
       console.error(`Attempted to make a play with icon ${icon} - invalid icon`);
-      return;
+      throw Error(`Attempted to make a play at ${row}, ${col} - out of bounds`);
     }
     if (board[row-1][col-1] !== null) {
       console.error(`Attempted to make a play at ${row}, ${col} - that space is already filled`);
-      return;
+      throw Error(`Attempted to make a play at ${row}, ${col} - out of bounds`);
     }
 
     board[row-1][col-1] = icon;
@@ -118,6 +118,18 @@ const Game = (function(gameboard) {
     PlayerTwo.name = name;
   }
 
-  const 
+  const playGame = function() {
+    // dummy player names for now
+    namePlayerOne("Player One");
+    namePlayerTwo("Player Two");
+
+    let playerTurn = PlayerOne;
+
+    while (gameboard.getWinningIndices === null) {
+      console.log(`${playerTurn.name}'s Turn`);
+      prompt('Enter "row col" to play');
+
+    }
+  }
   
 })(GameBoardFactory())
