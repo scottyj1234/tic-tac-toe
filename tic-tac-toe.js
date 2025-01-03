@@ -133,11 +133,22 @@ const Game = (function(gameboard) {
 
     let playerTurn = playerOne;
 
-    while (gameboard.getWinningIndices === null) {
+    while (gameboard.getWinningIndices === null && !gameboard.isDraw()) {
       console.log(`${playerTurn.name}'s Turn`);
+      console.log(gameboard.boardToString());
       executePlayerTurn();
 
       playerTurn = (playerTurn === playerOne) ? playerTwo : playerOne;
+    }
+
+    if (gameboard.isDraw()) {
+      console.log('The game is a draw!');
+    } else {
+      const winningPlayer = (playerTurn === playerOne) ? playerTwo : playerOne;
+      console.log(`Winner: ${winningPlayer.name}!`);
+      console.log(gameboard.boardToString());
+      console.log('Winning indices:');
+      console.log(gameboard.getWinningIndices());
     }
   }
 
@@ -152,5 +163,4 @@ const Game = (function(gameboard) {
       }
     }
   }
-  
 })(GameBoardFactory())
