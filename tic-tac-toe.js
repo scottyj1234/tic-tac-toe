@@ -1,4 +1,4 @@
-const GameBoard = (function () {
+const GameBoardFactory = function () {
   let board = [
     [null, null, null],
     [null, null, null], 
@@ -97,5 +97,27 @@ const GameBoard = (function () {
     clearBoard,
     getWinningIndices,
   };
-})();
+};
 
+const Game = (function(gameboard) {
+  const PlayerOne = {
+    name: "",
+    icon: "x"
+  }
+  
+  const PlayerTwo = {
+    name: "",
+    icon: "o"
+  }
+
+  const namePlayerOne = function(name) {
+    PlayerOne.name = name;
+  }
+
+  const namePlayerTwo = function(name) {
+    PlayerTwo.name = name;
+  }
+
+  const 
+  
+})(GameBoardFactory())
