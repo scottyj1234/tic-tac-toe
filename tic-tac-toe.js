@@ -1,9 +1,11 @@
-const GameBoardFactory = function () {
+const GameBoardFactory = function (rootDOMElement) {
   let board = [
     [null, null, null],
     [null, null, null], 
     [null, null, null]
   ];
+
+  let rootDOMElement = rootDOMElement;
 
   const boardToString = function() {
     let boardString = ' _ _ _ \n';
@@ -17,6 +19,32 @@ const GameBoardFactory = function () {
     }
 
     return boardString;
+  }
+
+  // Need to change - find a way to give the play function a callback to continue to the next turn
+  const updateDOM = function(playerTurn) {
+    const boardDivs = rootDOMElement.querySelectorAll('>div');
+    for (let i = 0; i < board.length; ++i) {
+      for (let j = 0; j < board[i].length; ++j) {
+        boardDivs[i + j].innerHTML = "";
+        if (board[i][j] === null) {
+          boardDivs[i + j].appendChild(createMakePlayButton(i, j, playerTurn));
+        }
+        else {
+          boardDivs[i + j].textContent = board[i][j];
+        }
+      }
+    }
+  }
+
+  const createMakePlayButton = function(row, col, playerTurn) {
+    const newButton = document.createElement('button');
+    newButton.className = "make-play-button";
+    newButton.addEventListener('click', (e) => {
+      makePlay(row + 1, col + 1, playerTurn.icon);
+
+    });
+    return newButton;
   }
 
   const clearBoard = function() {
@@ -95,7 +123,8 @@ const GameBoardFactory = function () {
     makePlay,
     clearBoard,
     getWinningIndices,
-    isDraw
+    isDraw,
+    updateDOM
   };
 };
 
@@ -160,4 +189,5 @@ const Game = (function(gameboard) {
   return {
     playGame
   }
-})(GameBoardFactory())
+})(GameBoardFactory(document.querySelector('div.board')))
+

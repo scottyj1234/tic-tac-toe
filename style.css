@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div.board {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    width: 500px;
+    height: 500px;
+}
+
+div.board>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.top-row,
+div.bottom-row,
+div.middle-row {
+    border-right: solid 1px black;
+}
+
+div.top-row:nth-child(3n + 3),
+div.bottom-row:nth-child(3n + 3),
+div.middle-row:nth-child(3n + 3) {
+    border-right: none;
+}
+
+div.middle-row {
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+}
